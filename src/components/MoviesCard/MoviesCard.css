@@ -1,0 +1,111 @@
+.card {
+  margin: 0;
+  padding: 0;
+  max-width: 360px;
+  height: 319px;
+  border-radius: 6px;
+  object-fit: contain;
+  background: #222;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 54px;
+  align-items: center;
+}
+
+.card__title {
+  margin: 0;
+  padding: 0 0 0 15px;
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 120% */
+}
+.card__time {
+  margin: 0;
+  padding: 0 20px 0 0;
+  color: #8b8b8b;
+  text-align: right;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.card__image {
+  width: 100%;
+  padding-bottom: 18px;
+}
+
+.card__btn-save {
+  align-self: center;
+  width: 100px;
+  height: 29px;
+  border-radius: 30px;
+  background: #313131;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+  cursor: pointer;
+  border: none;
+}
+
+.card__btn-save:hover {
+  opacity: 0.800000011920929;
+}
+
+.card__btn-save-active {
+  background-image: url("../../images/btnSave.png");
+}
+
+.card__btn-save-saved {
+  background-image: url("../../images/btnSaved.png");
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 342px;
+    height: 309px;
+  }
+  .card-hide {
+    display: none;
+  }
+  .card__text {
+    padding-top: 2px;
+    padding-left: 2px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .card {
+    max-width: 300px;
+    height: 271px;
+  }
+
+  .card__text {
+    min-height: 46px;
+  }
+
+  .card__title {
+    font-size: 12px;
+    padding-left: 12px;
+  }
+  .card__time {
+    font-size: 10px;
+    padding-right: 14px;
+  }
+
+  .card__image {
+    padding-bottom: 15px;
+  }
+}

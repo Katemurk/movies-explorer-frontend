@@ -1,0 +1,236 @@
+.header {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #073042;
+  max-width: 100%;
+}
+
+.header-main {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #202020;
+  max-width: 1280px;
+}
+
+.header__info {
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.header__logo {
+  margin: 18px 0 15px 70px;
+  padding: 0;
+  background-repeat: no-repeat;
+}
+
+.header__buttons-container {
+  margin: 0;
+  padding: 0 50px 0 0;
+  display: flex;
+}
+
+.header-main-buttons-container {
+  margin: 0;
+  padding: 12px 20px 0 0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__button {
+  padding: 0 30px 0 0;
+  margin: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__button:hover {
+  opacity: 0.800000011920929;
+}
+.header-main-button {
+  margin: 0;
+  padding: 0;
+  height: 32px;
+  background: none;
+  border: none;
+  color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.header-main-button:hover {
+  opacity: 0.800000011920929;
+}
+.header-main-button_active {
+  font-weight: 500;
+}
+.header__button-login {
+  margin: 21px 20px 0 0;
+  padding: 0;
+  width: 76px;
+  height: 32px;
+  border-radius: 3px;
+  background-color: #3ddc84;
+  color: black;
+}
+.header-main-button-login {
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 30px;
+  border-radius: 3px;
+  background-color: #3ddc84;
+  color: black;
+}
+.header-main-button-account {
+  padding-bottom: 12px;
+  padding-right: 20px;
+  width: 180px;
+  height: 32px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-self: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-main-button-accountImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: #313131;
+  background-image: url(../../images/account.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header__burger-btn {
+  display: none;
+}
+
+.header__burger-btn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 900px) {
+  .header__logo {
+    margin-left: 30px;
+  }
+
+  .header__buttons-container {
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-main-buttons-container {
+    display: none;
+  }
+
+  .header__nav {
+    margin: 0;
+    padding: 0 38px 0 0;
+    display: flex;
+    align-items: center;
+  }
+  .header__burger-btn {
+    display: block;
+    width: 28px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+  }
+  .header__burger-btn::before {
+    content: "";
+    width: 28px;
+    height: 3px;
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+  }
+  .header__burger-btn::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    bottom: 0;
+    background-color: #fff;
+  }
+  .header__burger-btn-span {
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    top: 10px;
+    background-color: #fff;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header__logo {
+    margin-left: 15px;
+  }
+
+  .header__buttons-container {
+    padding-right: 0;
+  }
+  .header__button {
+    padding-right: 13px;
+    font-size: 10px;
+  }
+
+  .header__button-login {
+    margin: 24px 15px 0 0;
+    padding: 0;
+    width: 54px;
+    height: 26px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__nav {
+    padding-right: 25px;
+  }
+
+  .header__burger-btn {
+    width: 20px;
+    height: 22px;
+  }
+  .header__burger-btn::before {
+    width: 22px;
+    height: 2px;
+  }
+  .header__burger-btn::after {
+    width: 22px;
+    height: 2px;
+  }
+  .header__burger-btn-span {
+    width: 22px;
+    height: 2px;
+  }
+}
