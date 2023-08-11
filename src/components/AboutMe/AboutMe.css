@@ -131,10 +131,10 @@
     height: 282px;
   }
   .aboutMe__info-description {
-    text-align: center;
+    text-align: left;
   }
 }
-@media screen and (max-width: 490px) {
+@media screen and (max-width: 530px) {
   .aboutMe__info {
     flex-direction: column-reverse;
     align-items: center;

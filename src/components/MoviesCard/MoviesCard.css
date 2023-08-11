@@ -73,7 +73,7 @@
   background-image: url("../../images/btnSaved.png");
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 968px) {
   .card {
     max-width: 342px;
     height: 309px;

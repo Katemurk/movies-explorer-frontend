@@ -110,26 +110,33 @@
 .menu__link-active {
   border-bottom: 2px solid #fff;
 }
+@media screen and (max-width: 534px) {
+  .menu__container {
+    width: 390px;
+  }
+}
+
+@media screen and (max-width: 389px) {
+  .menu__container {
+    width: 320px;
+  }
+}
 
 @media screen and (max-width: 320px) {
+  .menu__container {
+    width: 320px;
+  }
+
   .menu__btn-close {
     margin-top: 8px;
     margin-right: 8px;
   }
   .menu__list {
-    padding-top: 93px;
-    padding-left: 200px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-top: 92px;
     gap: 24px;
-  }
-  .menu__link {
-    padding-bottom: 7px;
   }
 
   .menu__account-text {
-    margin: 444px 0 0 200px;
+    margin: 444px 0 0 0;
   }
 }

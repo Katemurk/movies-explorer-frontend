@@ -9,8 +9,8 @@ function Footer() {
 <div className="footer__info">
   <p className="footer__info-year">&#169; 2023</p>
   <div className="footer__info-contacts">
-<a href="https://practicum.yandex.ru/" className="footer__info-link">Яндекс.Практикум</a>
-<a href="https://github.com/Katemurk" className="footer__info-link">Github</a>
+<a href="https://practicum.yandex.ru/" rel="noreferrer" target="_blank" className="footer__info-link">Яндекс.Практикум</a>
+<a href="https://github.com/Katemurk" rel="noreferrer" target="_blank" className="footer__info-link">Github</a>
   </div>
 </div>
 </div>

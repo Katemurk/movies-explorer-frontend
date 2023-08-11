@@ -17,7 +17,7 @@ import Profile from "../Profile/Profile";
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(true);
   return (
-    <div className="page">
+    <div className="app">
       <Routes>
         <Route
           path="/"
