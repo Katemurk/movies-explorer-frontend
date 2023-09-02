@@ -90,7 +90,13 @@
   line-height: normal;
   cursor: pointer;
 }
-.register__submit:hover {
+.register__submit:disabled {
+  opacity: 0.4;
+  cursor: default;
+  background-color:#ee3465;
+}
+
+.register__submit:not([disabled]):hover  {
   opacity: 0.800000011920929;
 }
 

@@ -93,7 +93,11 @@
 .login__submit:hover {
   opacity: 0.800000011920929;
 }
-
+.login__submit:disabled {
+  opacity: 0.4;
+  cursor: default;
+  background-color: red;
+}
 .login__block {
   margin: 0 auto;
   padding: 15px 0 0 0;
