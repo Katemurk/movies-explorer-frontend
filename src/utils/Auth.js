@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://katemur.nomoredomains.xyz";
 const checkError = (res) => {
   if (res.ok) {
     return res.json();
