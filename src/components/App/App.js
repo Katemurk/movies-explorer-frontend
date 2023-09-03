@@ -59,6 +59,14 @@ const App = () => {
         .finally(() => {
           setIsLoading(true);
         });
+        api.getMoviesInfo()
+        .then((list) => {
+          setSavedMovies(list.reverse());
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setIsLoading(true);
+        });
     }
   }, [loggedIn]);
 

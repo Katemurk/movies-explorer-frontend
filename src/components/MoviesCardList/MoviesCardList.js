@@ -33,6 +33,7 @@ function MoviesCardList({
   const getSavedMovieCard = (savedMovies, card) => {
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
   };
+  
   const renderMovieCards = (arr) => {
     return arr.map((card) => (
       <MoviesCard
@@ -63,7 +64,8 @@ function MoviesCardList({
       <ul className="moviesCards__list">
         {location.pathname === "/saved-movies"
           ? renderMovieCards(cards)
-          : renderMovieCards(cards.slice(0, countMovies))}
+          : renderMovieCards(cards.slice(0, countMovies))
+          }
       </ul>
       {countMovies < cards.length && (
         <div className="moviesCards__btn-more" onClick={handleShowMore}>
