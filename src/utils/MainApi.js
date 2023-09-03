@@ -41,7 +41,7 @@ class Api {
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN
-
+    
       }),
     }).then((res) => this._getError(res));
   }
@@ -86,5 +86,5 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://api.katemur.nomoredomains.xyz",
+  baseUrl: "http://localhost:3000",
 });
