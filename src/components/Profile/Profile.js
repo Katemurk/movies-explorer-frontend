@@ -7,11 +7,12 @@ import { useFormAndValidation } from "../../hooks/useForAndValidation";
 
 const Profile = ({ textErr, onUpdateUser, signOut }) => {
   const currentUser = React.useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, setIsValid, resetForm } =
     useFormAndValidation();
   const [isEdit, setIsEdit] = useState(false);
   const [isDisable, setIsDisable] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
+  const [isSucsess, setIsSucsess] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -28,11 +29,9 @@ const Profile = ({ textErr, onUpdateUser, signOut }) => {
       currentUser.name === values.name &&
       currentUser.email === values.email
     ) {
-      setIsDisable(true);
-    } else {
-      setIsDisable(false);
+      setIsValid(false);
     }
-  }, [values.name, values.email]);
+  }, [values, setIsValid]);
 
   const handleEditProfile = (e) => {
     e.preventDefault();
@@ -41,17 +40,17 @@ const Profile = ({ textErr, onUpdateUser, signOut }) => {
       email: values.email,
     });
     setIsEdit(false);
+    setIsSucsess(true);
   };
+  setTimeout(function () {
+    setIsSucsess(false);
+  }, 4500);
 
   return (
     <>
       <Header loggedIn={loggedIn} />
       <section className="profile">
-        <form
-          className="profile__container"
-          onSubmit={handleEditProfile}
-        
-        >
+        <form className="profile__container" onSubmit={handleEditProfile}>
           <h2 className="profile__title">Привет, {currentUser.name}!</h2>
           <label className="profile__field">
             Имя
@@ -88,7 +87,9 @@ const Profile = ({ textErr, onUpdateUser, signOut }) => {
             ></input>
           </label>
           <span className="profile__error">{errors.email}</span>
-
+          <span className="profile__lucky">
+            {isSucsess ? "Изменение данных прошло успешно!" : ""}
+          </span>
           <div className={isEdit ? "profile__block-save" : "profile__block"}>
             <button
               type={!isEdit ? "submit" : "button"}

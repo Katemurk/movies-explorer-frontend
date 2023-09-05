@@ -12,26 +12,27 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
   const [isLoading, setIsLoading] = useState(true);
   const [filterMovie, setFilterMovie] = useState(savedMovies);
   const [textErr, setTextErr] = useState(null);
-  const [searchText, setSearchText] = useState("");
+  const [searchSaveText, setSearchSaveText] = useState("");
   const [searchMovies, setSearchMovies] = useState("");
-  const [shorts, setShorts] = useState(
-    JSON.parse(localStorage.getItem("shorts")) || false
+  const [savShorts, setSavShorts] = useState(
+    JSON.parse(localStorage.getItem("savesShorts")) || false
   );
   function handleSearch(data) {
     setSearchMovies(data);
   }
 
-  function handleFilterShort() {
-    setShorts(!shorts);
-  }
+  const handleFilterShortSaved = (isCheck) => {
+    setSavShorts(isCheck);
+    localStorage.setItem("savesShorts", JSON.stringify(isCheck));
+  };
 
   useEffect(() => {
     setTextErr(null);
-    const filteredMoviesList = shorts
+    const filteredMoviesList = savShorts
       ? filterMoviesDuration(filterSaveMovie(savedMovies, searchMovies))
       : filterSaveMovie(savedMovies, searchMovies);
     setFilterMovie(filteredMoviesList);
-  }, [savedMovies, shorts, searchMovies]);
+  }, [savedMovies, savShorts, searchMovies]);
 
   const filterSaveMovie = (cards, saveMovie) => {
     return cards.filter((movie) => {
@@ -51,22 +52,20 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
       <Header loggedIn={loggedIn} />
       <SearchForm
         handleMovie={handleSearch}
-        searchText={searchText}
+        searchText={searchSaveText}
       ></SearchForm>
       <FilterCheckbox
-        handleShorts={handleFilterShort}
-        shorts={shorts}
+        shorts={savShorts}
+        handleShorts={handleFilterShortSaved}
       ></FilterCheckbox>
 
       {!isLoading ? (
         <Preloader />
       ) : textErr ? (
         <p className="movies__saved-error">Произошла ошибка!! &#x1f63f;</p>
-      ) 
-      : filterMovie.length === 0 ? (
+      ) : filterMovie.length === 0 ? (
         <p className="movies__saved-error">Ничего не найдено! &#x1f63f;</p>
-      ) 
-      :(
+      ) : (
         <MoviesCardList
           cards={filterMovie}
           isSavedMovies={true}

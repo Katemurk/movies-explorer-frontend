@@ -70,6 +70,7 @@ const App = () => {
     }
   }, [loggedIn]);
 
+  
   const handleRegistration = (name, email, password) => {
     auth
       .register(name, email, password)

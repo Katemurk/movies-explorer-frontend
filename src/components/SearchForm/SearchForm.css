@@ -30,7 +30,19 @@
 .searchForm__input:focus {
   box-shadow: 0 0 0 0.1rem rgba(101, 61, 197, 0.25);
 }
-
+.searchForm__err {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 147px;
+  left: 70px;
+  min-height: 15px;
+  color: #ee3465;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 .searchForm__button {
   margin: 0;
   padding: 0;
@@ -71,6 +83,9 @@
     top: 78px;
     right: 40px;
   }
+  .searchForm__err {
+    left: 30px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -91,5 +106,9 @@
     height: 44px;
     top: 75px;
     right: 20px;
+  }
+  .searchForm__err {
+    top: 125px;
+    left: 20px;
   }
 }

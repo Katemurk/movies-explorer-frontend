@@ -3,7 +3,9 @@ import "../SearchForm/SearchForm.css";
 import { useFormAndValidation } from "../../hooks/useForAndValidation";
 
 function SearchForm(props) {
-  const { values, handleChange, isValid, resetForm } = useFormAndValidation();
+  const { values, errors, handleChange, isValid, resetForm } =
+    useFormAndValidation();
+  const [textErr, setTextErr] = useState("");
 
   useEffect(() => {
     resetForm({ inputValue: props.searchText });
@@ -11,12 +13,20 @@ function SearchForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleMovie(values.inputValue);
-    console.log(values.inputValue);
+    if (values.inputValue === "") {
+      setTextErr("Нужно ввести ключевое слово!");
+    } else {
+      setTextErr("");
+      props.handleMovie(values.inputValue);
+    }
   };
   return (
     <section className="searchForm">
-      <form className="searchForm__container" onSubmit={handleSubmit}>
+      <form
+        className="searchForm__container"
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <input
           type="text"
           required
@@ -26,12 +36,11 @@ function SearchForm(props) {
           value={values.inputValue || ""}
           onChange={handleChange}
         ></input>
-
+        <span className="searchForm__err">{textErr}</span>
         <button
           className="searchForm__button"
           type="submit"
           aria-label="Кнопка поиска"
-          disabled={!isValid}
         >
           Поиск
         </button>

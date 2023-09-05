@@ -3,6 +3,7 @@ import "../Register/Register.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import { useFormAndValidation } from "../../hooks/useForAndValidation";
+import { validateEmail } from "../../utils/utils";
 
 const Register = (props) => {
   const { values, handleChange, errors, isValid, resetForm, setIsValid } =
@@ -70,6 +71,7 @@ const Register = (props) => {
             className="register__info"
             minLength="5"
             maxLength="30"
+            pattern={validateEmail}
             required
             autoComplete="off"
           ></input>

@@ -10,7 +10,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function Movies(props) {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const [filterMovie, setFilterMovie] = useState([]);
   const [textErr, setTextErr] = useState(null);
@@ -21,10 +21,7 @@ function Movies(props) {
   );
 
   useEffect(() => {
-    if (localStorage.getItem("movies")) {
-      setCards(JSON.parse(localStorage.getItem("movies")));
-      setIsLoading(false);
-    } else {
+    if (searchPerformed && cards.length === 0) {
       setIsLoading(true);
       setTextErr(null);
       moviesApi
@@ -41,12 +38,13 @@ function Movies(props) {
           setIsLoading(false);
         });
     }
-   
     if (localStorage.getItem("searchText")) {
       setSearchText(localStorage.getItem("searchText"));
       setSearchPerformed(true);
     }
-  }, []);
+  }, [searchPerformed, cards]);
+
+
 
   useEffect(() => {
     const filterMovie = cards.filter((card) => {
@@ -96,18 +94,15 @@ function Movies(props) {
         filterMovie.length === 0 && (
           <p className="movies__error">Ничего не найдено! &#x1f63f;</p>
         )}
-      {
-        !isLoading &&
-        !textErr && searchPerformed && filterMovie.length > 0 && (
-          <MoviesCardList
-            cards={filterMovie}
-            onSaveMovie={props.onSaveMovie}
-            onDeleteMovie={props.onDeleteMovie}
-            savedMovies={props.savedMovies}
-            isSavedMovies={false}
-          ></MoviesCardList>
-        )
-      }
+      {!isLoading && !textErr && searchPerformed && filterMovie.length > 0 && (
+        <MoviesCardList
+          cards={filterMovie}
+          onSaveMovie={props.onSaveMovie}
+          onDeleteMovie={props.onDeleteMovie}
+          savedMovies={props.savedMovies}
+          isSavedMovies={false}
+        ></MoviesCardList>
+      )}
 
       <Footer></Footer>
     </main>
