@@ -14,6 +14,7 @@ import NotFoundErr from "../NotFoundErr/NotFoundErr";
 import Profile from "../Profile/Profile";
 import * as auth from "../../utils/Auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { moviesApi } from "../../utils/MovieApi";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -25,6 +26,9 @@ const App = () => {
   const [textErr, setTextErr] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [savedMovies, setSavedMovies] = useState([]);
+
+
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -70,6 +74,25 @@ const App = () => {
     }
   }, [loggedIn]);
 
+  const requestMovie = async () => {
+     
+     try {
+      setIsLoading(true);
+      setTextErr(null);
+      const res = await moviesApi.getMovies();
+          setCards(res);
+          localStorage.setItem("movies", JSON.stringify(res));
+        } catch (err) {
+      
+          setTextErr("Произошла ошибка! Попробуйте еще раз.");
+          console.log(err);
+        }
+        finally {
+          setIsLoading(false);
+        }
+ 
+  
+  };
   
   const handleRegistration = (name, email, password) => {
     auth
@@ -138,6 +161,27 @@ const App = () => {
         setIsLoading(true);
       });
   };
+  // useEffect(() => {
+  //   if (localStorage.getItem("movies")) {
+  //     setCards(JSON.parse(localStorage.getItem("movies")));
+  //     setIsLoading(false);
+  //   } else {
+  //     setIsLoading(true);
+  //     setTextErr(null);
+  //     moviesApi
+  //       .getMovies()
+  //       .then((res) => {
+  //         setCards(res);
+  //         localStorage.setItem("movies", JSON.stringify(res));
+  //       })
+  //       .catch((err) => {
+  //         setTextErr("Произошла ошибка! Попробуйте еще раз.");
+  //         console.log(err);
+  //       })
+  //       .finally(() => {
+  //         setIsLoading(false);
+  //       });
+  //   }},[])
 
   const handleSaveMovie = (card) => {
     setIsLoading(true);
@@ -189,6 +233,8 @@ const App = () => {
                 onSaveMovie={handleSaveMovie}
                 savedMovies={savedMovies}
                 onDeleteMovie={deleteCard}
+                requestMovie={requestMovie}
+       
               ></ProtectedRoute>
             }
           />

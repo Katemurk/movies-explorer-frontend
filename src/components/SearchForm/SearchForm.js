@@ -17,7 +17,9 @@ function SearchForm(props) {
       setTextErr("Нужно ввести ключевое слово!");
     } else {
       setTextErr("");
+      props.setSearchPerformed(true);
       props.handleMovie(values.inputValue);
+      
     }
   };
   return (

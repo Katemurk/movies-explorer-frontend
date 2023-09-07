@@ -19,30 +19,33 @@ function Movies(props) {
   const [shorts, setShorts] = useState(
     JSON.parse(localStorage.getItem("shorts")) || false
   );
+const [isLoad, setIsLoad] = useState(false);
 
-  useEffect(() => {
-    if (searchPerformed && cards.length === 0) {
-      setIsLoading(true);
-      setTextErr(null);
-      moviesApi
-        .getMovies()
-        .then((res) => {
-          setCards(res);
-          localStorage.setItem("movies", JSON.stringify(res));
-        })
-        .catch((err) => {
-          setTextErr("Произошла ошибка! Попробуйте еще раз.");
-          console.log(err);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
+
+useEffect(() => {
+if (searchPerformed) {
+    setIsLoading(true);
+    setTextErr(null);
+    moviesApi
+      .getMovies()
+      .then((res) => {
+        setCards(res);
+        localStorage.setItem("movies", JSON.stringify(res));
+      })
+      .catch((err) => {
+        setTextErr("Произошла ошибка! Попробуйте еще раз.");
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
     if (localStorage.getItem("searchText")) {
       setSearchText(localStorage.getItem("searchText"));
       setSearchPerformed(true);
     }
-  }, [searchPerformed, cards]);
+  }, [searchPerformed]);
 
 
 
@@ -64,8 +67,10 @@ function Movies(props) {
   }, [searchText, cards, shorts, searchPerformed]);
 
   const handleMovie = (value) => {
+
     setSearchText(value);
     setSearchPerformed(true);
+    props.requestMovie();
     localStorage.setItem("searchText", value);
     console.log("movie");
   };
@@ -81,6 +86,8 @@ function Movies(props) {
       <SearchForm
         handleMovie={handleMovie}
         searchText={searchText}
+        setSearchPerformed={ setSearchPerformed}
+        
       ></SearchForm>
       <FilterCheckbox
         handleShorts={handleShorts}
