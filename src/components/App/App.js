@@ -27,7 +27,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [savedMovies, setSavedMovies] = useState([]);
 
-
+  const [searchText, setSearchText] = useState("");
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -73,27 +73,8 @@ const App = () => {
         });
     }
   }, [loggedIn]);
+  
 
-  const requestMovie = async () => {
-     
-     try {
-      setIsLoading(true);
-      setTextErr(null);
-      const res = await moviesApi.getMovies();
-          setCards(res);
-          localStorage.setItem("movies", JSON.stringify(res));
-        } catch (err) {
-      
-          setTextErr("Произошла ошибка! Попробуйте еще раз.");
-          console.log(err);
-        }
-        finally {
-          setIsLoading(false);
-        }
- 
-  
-  };
-  
   const handleRegistration = (name, email, password) => {
     auth
       .register(name, email, password)
@@ -161,28 +142,11 @@ const App = () => {
         setIsLoading(true);
       });
   };
-  // useEffect(() => {
-  //   if (localStorage.getItem("movies")) {
-  //     setCards(JSON.parse(localStorage.getItem("movies")));
-  //     setIsLoading(false);
-  //   } else {
-  //     setIsLoading(true);
-  //     setTextErr(null);
-  //     moviesApi
-  //       .getMovies()
-  //       .then((res) => {
-  //         setCards(res);
-  //         localStorage.setItem("movies", JSON.stringify(res));
-  //       })
-  //       .catch((err) => {
-  //         setTextErr("Произошла ошибка! Попробуйте еще раз.");
-  //         console.log(err);
-  //       })
-  //       .finally(() => {
-  //         setIsLoading(false);
-  //       });
-  //   }},[])
 
+
+      
+    
+    
   const handleSaveMovie = (card) => {
     setIsLoading(true);
     // const isLiked = card.likes.some(id => id === currentUser._id);
@@ -233,7 +197,7 @@ const App = () => {
                 onSaveMovie={handleSaveMovie}
                 savedMovies={savedMovies}
                 onDeleteMovie={deleteCard}
-                requestMovie={requestMovie}
+    
        
               ></ProtectedRoute>
             }
