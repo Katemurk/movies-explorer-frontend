@@ -1,0 +1,114 @@
+.searchForm {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 0;
+}
+.searchForm__container {
+  margin: 0;
+  padding: 70px 70px 0 70px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.searchForm__input {
+  padding: 0 0 0 22px;
+  margin: 0;
+  width: 100%;
+  height: 70px;
+  color: #8b8b8b;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 111.111% */
+  border: 1.5px solid rgba(66.7%, 66.7%, 66.7%, 0.2);
+  outline: none;
+  border-radius: 8px;
+  background-color: #202020;
+}
+.searchForm__input:focus {
+  box-shadow: 0 0 0 0.1rem rgba(101, 61, 197, 0.25);
+}
+.searchForm__err {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 147px;
+  left: 70px;
+  min-height: 15px;
+  color: #ee3465;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.searchForm__button {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 82px;
+  right: 77px;
+  width: 100px;
+  height: 52px;
+  border-radius: 5px;
+  background: #4285f4;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  cursor: pointer;
+  align-self: center;
+  z-index: 0;
+  border: none;
+}
+
+.searchForm__button:hover {
+  opacity: 0.800000011920929;
+}
+
+.searchForm__button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+@media screen and (max-width: 786px) {
+  .searchForm__container {
+    padding: 69px 30px 0 30px;
+  }
+
+  .searchForm__button {
+    top: 78px;
+    right: 40px;
+  }
+  .searchForm__err {
+    left: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .searchForm__container {
+    padding: 69px 15px 0 15px;
+  }
+
+  .searchForm__input {
+    height: 53px;
+    padding-left: 10px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+  .searchForm__button {
+    width: 80px;
+    height: 44px;
+    top: 75px;
+    right: 20px;
+  }
+  .searchForm__err {
+    top: 125px;
+    left: 20px;
+  }
+}

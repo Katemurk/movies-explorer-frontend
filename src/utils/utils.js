@@ -1,0 +1,1 @@
+export const validateEmail = '^([^ ]+@[^ ]+\\.[a-z]{2,6}|)$';
